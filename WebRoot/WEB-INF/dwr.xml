@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN"
+    "http://getahead.org/dwr/dwr10.dtd">
+<!--dwr配置根标签-->
+<dwr>
+	<!--配置后台java类与前端js的关系-->
+  <allow>
+  	<!--	
+  		create标签   创建一个新的dwr配置 
+		creator属性   创建示例的方式s(一般写:new)
+		javascript属性  前端调用的javascript脚本对象名称(随便写)
+	-->
+    <create creator="new" javascript="JDate">
+    	<!-- 
+			param标签   配置后台使用类 
+			name属性	 后台类的类型(一般写:class)
+			value属性   后台类具体的类名
+		-->
+      <param name="class" value="java.util.Date"/>
+    </create>
+    
+    <create javascript="test" creator="new">
+    	<param name="class" value="com.lck.dwr.DwrTest"></param>
+    </create>
+    
+    <!--有参数，返回值为对象-->
+    <convert match="com.lck.bean.Customer" converter="bean"></convert>
+  </allow>
+</dwr>

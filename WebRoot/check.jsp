@@ -1,4 +1,4 @@
-<%@page import="com.sale.dao.UserDAO"%>
+<%@page import="com.lck.dao.UserDAO2"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -37,8 +37,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	
     	System.out.println(usercode+" "+password);
-    	UserDAO dao = new UserDAO();
-    	if(dao.checkUser(usercode,password)){
+    	UserDAO2 dao2 = new UserDAO2();
+    	if(dao2.checkUser(usercode,password)){
     		out.println("欢迎您："+usercode+"登录系统");
     	}else{
     		out.println("账户或者密码错误!<a href='login.jsp'>返回</a>");

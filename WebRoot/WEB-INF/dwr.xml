@@ -26,5 +26,6 @@
     
     <!--有参数，返回值为对象-->
     <convert match="com.lck.bean.Customer" converter="bean"></convert>
+    <convert match="com.lck.bean.Inventory" converter="bean"></convert>
   </allow>
 </dwr>

@@ -1,64 +1,64 @@
---ÉÌÆ·±í
+ï»¿--å•†å“è¡¨
 create table t_product2(
   p_id number(6) primary key,
   p_name varchar2(20),
-  --ÊÛ¼Û
+  --å”®ä»·
   p_salePrice number(5,2),
-  --µ¥Î»
+  --å•ä½
   p_unit varchar2(5),
-  --ÀàĞÍÍâ¼ü
+  --ç±»å‹å¤–é”®
   t_id number (6),
   constraint fk_t_id foreign key(t_id) references t_type2(t_id)
 );
 
---²åÈëÉÌÆ·
-insert into t_product2 values(1,'ÎÀÁú',100.0,'°ü',1);
-insert into t_product2 values(2,'ÀîĞ¡Åô',200.0,'¸ù',1);
-insert into t_product2 values(3,'ÏãÓÍÌõ',500.5,'°ü',1);
-insert into t_product2 values(4,'±±¬vÂéÀ±Èâ',300.5,'Æ¬',1);
-insert into t_product2 values(5,'°²Ä½Ï£',102.0,'Æ¿',2);
-insert into t_product2 values(6,'ÓÅÒæC',103.0,'Æ¿',2);
-insert into t_product2 values(7,'´ü×°ÄÌ',100.0,'´ü',2);
-insert into t_product2 values(8,'Æ»¹û',100.0,'¸ö',3);
-insert into t_product2 values(9,'ÆÏÌÑ',200.0,'¿Å',3);
-insert into t_product2 values(10,'ÌÒ×Ó',300.0,'¸ö',3);
-insert into t_product2 values(11,'Ïã½¶',100.0,'¸ù',3);
-insert into t_product2 values(12,'´ó°×ÍÃ',100.0,'°ü',4);
-insert into t_product2 values(13,'½ğË¿ºï',200.0,'Á£',4);
-insert into t_product2 values(14,'°¢¶û±°Ë¹',100.0,'Ìõ',4);
-insert into t_product2 values(15,'ÈíÌÇ',120.0,'Á£',4);
+--æ’å…¥å•†å“
+insert into t_product2 values(1,'å«é¾™',100.0,'åŒ…',1);
+insert into t_product2 values(2,'æå°é¹',200.0,'æ ¹',1);
+insert into t_product2 values(3,'é¦™æ²¹æ¡',500.5,'åŒ…',1);
+insert into t_product2 values(4,'åŒ—ç‘…éº»è¾£è‚‰',300.5,'ç‰‡',1);
+insert into t_product2 values(5,'å®‰æ…•å¸Œ',102.0,'ç“¶',2);
+insert into t_product2 values(6,'ä¼˜ç›ŠC',103.0,'ç“¶',2);
+insert into t_product2 values(7,'è¢‹è£…å¥¶',100.0,'è¢‹',2);
+insert into t_product2 values(8,'è‹¹æœ',100.0,'ä¸ª',3);
+insert into t_product2 values(9,'è‘¡è„',200.0,'é¢—',3);
+insert into t_product2 values(10,'æ¡ƒå­',300.0,'ä¸ª',3);
+insert into t_product2 values(11,'é¦™è•‰',100.0,'æ ¹',3);
+insert into t_product2 values(12,'å¤§ç™½å…”',100.0,'åŒ…',4);
+insert into t_product2 values(13,'é‡‘ä¸çŒ´',200.0,'ç²’',4);
+insert into t_product2 values(14,'é˜¿å°”å‘æ–¯',100.0,'æ¡',4);
+insert into t_product2 values(15,'è½¯ç³–',120.0,'ç²’',4);
 
 select * from t_product2
 
---ÉÌÆ·ÀàĞÍ±í 
+--å•†å“ç±»å‹è¡¨ 
 create table t_type2(
   t_id number(6)  primary key,
   t_name varchar(20) 
 );
 
---²åÈëÉÌÆ·ÀàĞÍ
-insert into t_type2 values(1,'À±Ìõ');
-insert into t_type2 values(2,'Å£ÄÌ');
-insert into t_type2 values(3,'Ë®¹û');
-insert into t_type2 values(4,'ÌÇ¹û');
+--æ’å…¥å•†å“ç±»å‹
+insert into t_type2 values(1,'è¾£æ¡');
+insert into t_type2 values(2,'ç‰›å¥¶');
+insert into t_type2 values(3,'æ°´æœ');
+insert into t_type2 values(4,'ç³–æœ');
 
---½ø»õ±í
+--è¿›è´§è¡¨
 create table t_purchasegood2(
-  --½ø»õ±àºÅ£¬ÉÌÆ·±àºÅÁªºÏÖ÷¼ü
+  --è¿›è´§ç¼–å·ï¼Œå•†å“ç¼–å·è”åˆä¸»é”®
   pur_id number(6)primary key,
-  --ÉÌÆ·±àºÅ£¨Íâ¼ü£©
+  --å•†å“ç¼–å·ï¼ˆå¤–é”®ï¼‰
   p_id number(6),
-  --½ø»õ¼Û¸ñ
+  --è¿›è´§ä»·æ ¼
   pur_price number(5,2),
-  --½ø»õÊıÁ¿
+  --è¿›è´§æ•°é‡
   pur_num number(5),
-  --¹©»õÉÌ£¨Íâ¼ü£©
+  --ä¾›è´§å•†ï¼ˆå¤–é”®ï¼‰
   s_id number(5),
-  --×´Ì¬
+  --çŠ¶æ€
   pur_status number(2),
-  --Ê±¼ä
+  --æ—¶é—´
   pur_time varchar2(30),
-  --Ô±¹¤±àºÅ£¨Íâ¼ü£©
+  --å‘˜å·¥ç¼–å·ï¼ˆå¤–é”®ï¼‰
   e_id number(6),
 
   constraint fk_p_id2 foreign key(p_id) references t_product2(p_id),
@@ -66,72 +66,72 @@ create table t_purchasegood2(
   constraint fk_e_id foreign key(e_id) references t_empl2(e_id)
 );
 
---Ô±¹¤±í
+--å‘˜å·¥è¡¨
 create table t_empl2(
   e_id number(6) primary key,
-  --Ô±¹¤Ãû×Ö
+  --å‘˜å·¥åå­—
   e_name varchar2(10)
 );
 
---½ÇÉ«±í
+--è§’è‰²è¡¨
 create table t_role2(
   r_id number(6) primary key,
-  --½ÇÉ«Ãû×Ö
+  --è§’è‰²åå­—
   r_name varchar2(10)
 );
 
---²Ëµ¥±í
+--èœå•è¡¨
 create table t_menu2(
   m_id number(6) primary key,
-  --²Ëµ¥Ãû
+  --èœå•å
   m_name varchar2(20),
-  --²Ëµ¥Â·¾¶
+  --èœå•è·¯å¾„
   m_path varchar2(100)
 );
 
---Ô±¹¤½ÇÉ«±í
+--å‘˜å·¥è§’è‰²è¡¨
 create table t_emplrole2(
-  --Ô±¹¤±àºÅ
+  --å‘˜å·¥ç¼–å·
   e_id number(6),
-  --½ÇÉ«±àºÅ
+  --è§’è‰²ç¼–å·
   r_id number(6),
-  --Íâ¼üÔ¼Êø
+  --å¤–é”®çº¦æŸ
   constraint fk_r_id2 foreign key(r_id) references t_role2(r_id),
   constraint fk_e_id2 foreign key(e_id) references t_empl2(e_id)
 );
 
---½ÇÉ«²Ëµ¥±í
+--è§’è‰²èœå•è¡¨
 create table t_rolemenu2(
-  --½ÇÉ«±àºÅ
+  --è§’è‰²ç¼–å·
   e_id number(6),
-  --²Ëµ¥±àºÅ
+  --èœå•ç¼–å·
   m_id number(6),
-  --Íâ¼üÔ¼Êø
+  --å¤–é”®çº¦æŸ
   constraint fk_m_id3 foreign key(m_id) references t_menu2(m_id),
   constraint fk_e_id3 foreign key(e_id) references t_empl2(e_id)
 );
 
---¹©»õÉÌ
+--ä¾›è´§å•†
 create table t_supplier2(
   s_id number(6) primary key,
   s_name varchar2(10)
 );
 
---¶©µ¥±í£¨ÏúÊÛ±í£©
+--è®¢å•è¡¨ï¼ˆé”€å”®è¡¨ï¼‰
 create table t_order2(
-  --¶©µ¥±àºÅ£¨Ö÷¼ü£©
+  --è®¢å•ç¼–å·ï¼ˆä¸»é”®ï¼‰
   o_id number(6) primary key,
-  --ÉÌÆ·±àºÅ£¨Íâ¼ü£©
+  --å•†å“ç¼–å·ï¼ˆå¤–é”®ï¼‰
   p_id number(6),
-  --ÉÌÆ·ÊıÁ¿
+  --å•†å“æ•°é‡
   o_num number(6),
-  --Ğ¡¼Æ£¨ÉÌÆ·ÊıÁ¿*µ¥¼Û£©
+  --å°è®¡ï¼ˆå•†å“æ•°é‡*å•ä»·ï¼‰
   o_tips number(10),
-  --¶©µ¥Ê±¼ä
+  --è®¢å•æ—¶é—´
   o_time varchar2(30),
-  --¿Í»§±àºÅ(Íâ¼ü)
+  --å®¢æˆ·ç¼–å·(å¤–é”®)
   cus_id number(6),
-  --Ô±¹¤±àºÅ
+  --å‘˜å·¥ç¼–å·
    e_id number(6),
   constraint fk_e_id4 foreign key(e_id) references t_empl2(e_id),
   constraint fk_p_id3 foreign key(p_id) references t_product2(p_id),
@@ -139,45 +139,45 @@ create table t_order2(
 );
 
 drop table t_order2
---¿Í»§±í
+--å®¢æˆ·è¡¨
 create table t_customer2(
   cus_id number(6) primary key,
   cus_name varchar2(10),
-  --¿Í»§ÀàĞÍ£¨1ÎªÆÕÍ¨¿Í»§£¬2Îªvip¿Í»§ÉÌÆ·´ò8ÕÛ£©
+  --å®¢æˆ·ç±»å‹ï¼ˆ1ä¸ºæ™®é€šå®¢æˆ·ï¼Œ2ä¸ºvipå®¢æˆ·å•†å“æ‰“8æŠ˜ï¼‰
   cus_type number(2),
-  --ÁªÏµÈË
+  --è”ç³»äºº
   cus_contacts varchar2(30),
-  --ÁªÏµµç»°
+  --è”ç³»ç”µè¯
   cus_tel varchar2(40),
-  --ËùÊôµØÇø
+  --æ‰€å±åœ°åŒº
   cus_area varchar2(40)
 );
 
 select * from t_customer2
 
---¿Í»§ĞòÁĞ
+--å®¢æˆ·åºåˆ—
 create sequence seq_customer2
   increment by 1
   start with 1000
   nomaxvalue
   nocycle;
 
---²åÈë¿Í»§Êı¾İ
-insert into t_customer2 values(seq_customer2.nextval,'ÕÅÈı',1,'ÕÅÈıµÄ°Ö°Ö','18773504905','³¤É³');
-insert into t_customer2 values(seq_customer2.nextval,'ÀîËÄ',2,'ÀîËÄµÄ°Ö°Ö','18573504905','±±¾©');
+--æ’å…¥å®¢æˆ·æ•°æ®
+insert into t_customer2 values(seq_customer2.nextval,'å¼ ä¸‰',1,'å¼ ä¸‰çš„çˆ¸çˆ¸','18773504905','é•¿æ²™');
+insert into t_customer2 values(seq_customer2.nextval,'æå››',2,'æå››çš„çˆ¸çˆ¸','18573504905','åŒ—äº¬');
 
---¿â´æ±í
+--åº“å­˜è¡¨
 create table t_inventory(
-  --Ö÷¼ü
+  --ä¸»é”®
   i_id number(6) primary key,
-  --ÉÌÆ·Íâ¼ü
+  --å•†å“å¤–é”®
   p_id number(6),
-  --ÊıÁ¿
+  --æ•°é‡
   i_num number(6),
   constraint fk_tp_id4 foreign key(p_id) references t_product2(p_id)
 );
 
---¿â´æĞòÁĞ
+--åº“å­˜åºåˆ—
 create sequence seq_inventory2
   increment by 1
   start with 1

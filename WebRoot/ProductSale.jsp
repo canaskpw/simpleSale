@@ -377,7 +377,7 @@ table#tableProductBySuppUnit td, th {
 				<!--servlet取出订单项-->
 				<c:forEach items="${orderItems }" var="orderItem">
 					<tr>
-						<td>${orderItem.inventory.pId}</td>
+						<td>  ${orderItem.inventory.pId}</td>
 						<td>${orderItem.inventory.pName}</td>
 						<td>${orderItem.inventory.iNum}</td>
 						<td>${orderItem.inventory.pUnit}</td>

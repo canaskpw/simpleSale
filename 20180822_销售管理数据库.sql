@@ -1,4 +1,13 @@
-﻿--商品表
+﻿--商品采购统计报表  商品采购明细；
+select * from t_purchasegood2 pur
+  join t_product2 p on p.p_id = pur.p_id
+  join t_empl2 e on e.e_id = pur.e_id
+  join t_supplier2 sup on sup.s_id = pur.s_id;
+  
+select *from t_purchasegood2;  
+drop table t_product2;
+select * from t_product2;
+--商品表
 create table t_product2(
   p_id number(6) primary key,
   p_name varchar2(20),
@@ -30,6 +39,7 @@ insert into t_product2 values(15,'软糖',120.0,'粒',4);
 
 select * from t_product2
 
+drop table t_type2;
 --商品类型表 
 create table t_type2(
   t_id number(6)  primary key,
@@ -42,7 +52,7 @@ insert into t_type2 values(2,'牛奶');
 insert into t_type2 values(3,'水果');
 insert into t_type2 values(4,'糖果');
 
-select * from t_type2 ;
+drop table t_purchasegood2;
 --进货表
 create table t_purchasegood2(
   --进货编号，商品编号联合主键
@@ -67,18 +77,15 @@ create table t_purchasegood2(
   constraint fk_e_id foreign key(e_id) references t_empl2(e_id)
 );
 
-drop table t_purchasegood2
+drop table t_empl2;
 --员工表
 create table t_empl2(
   e_id number(6) primary key,
-  --员工用户名
-  e_name varchar2(10),
-  --员工密码
-  e_password varchar2(20)
+  --员工名字
+  e_name varchar2(10)
 );
 
-insert into t_empl2  values(1,'admin','123456');
-
+drop table t_role2;
 --角色表
 create table t_role2(
   r_id number(6) primary key,
@@ -86,6 +93,7 @@ create table t_role2(
   r_name varchar2(10)
 );
 
+drop table t_menu2;
 --菜单表
 create table t_menu2(
   m_id number(6) primary key,
@@ -95,6 +103,7 @@ create table t_menu2(
   m_path varchar2(100)
 );
 
+drop table t_emplrole2;
 --员工角色表
 create table t_emplrole2(
   --员工编号
@@ -106,26 +115,27 @@ create table t_emplrole2(
   constraint fk_e_id2 foreign key(e_id) references t_empl2(e_id)
 );
 
-
+drop table t_rolemenu2;
 --角色菜单表
 create table t_rolemenu2(
   --角色编号
-  r_id number(6),
+  e_id number(6),
   --菜单编号
   m_id number(6),
   --外键约束
   constraint fk_m_id3 foreign key(m_id) references t_menu2(m_id),
-  constraint fk_r_id3 foreign key(r_id) references t_role2(r_id)
+  constraint fk_e_id3 foreign key(e_id) references t_empl2(e_id)
 );
 
-
-drop table t_supplier2
+drop table t_supplier2;
+select * from t_supplier2;
 --供货商
 create table t_supplier2(
   s_id number(6) primary key,
   s_name varchar2(10)
 );
 
+drop table t_order2;
 --订单表（销售表）
 create table t_order2(
   --订单编号（主键）
@@ -147,23 +157,7 @@ create table t_order2(
   constraint fk_cus_id foreign key(cus_id) references t_customer2(cus_id)
 );
 
---订单序列
-create sequence seq_order2
-  increment by 1
-  start with 1000
-  nomaxvalue
-  nocycle;
-
-
-
-insert into t_order2 values(seq_order2.nextval,3,1,500.5,'2018-06-10 10:10:10',1000,1);
-insert into t_order2 values(seq_order2.nextval,2,2,400.0,'2018-06-10 10:20:10',1000,1);
-select * from t_order2
-commit
-select seq_order2.nextval from dual
-select seq_order2.currval from dual
-
-
+drop table t_customer2;
 --客户表
 create table t_customer2(
   cus_id number(6) primary key,
@@ -191,22 +185,18 @@ create sequence seq_customer2
 insert into t_customer2 values(seq_customer2.nextval,'张三',1,'张三的爸爸','18773504905','长沙');
 insert into t_customer2 values(seq_customer2.nextval,'李四',2,'李四的爸爸','18573504905','北京');
 
+drop table t_inventory;
 --库存表
 create table t_inventory(
   --主键
   i_id number(6) primary key,
   --商品外键
   p_id number(6),
-  --库存量
+  --数量
   i_num number(6),
   constraint fk_tp_id4 foreign key(p_id) references t_product2(p_id)
 );
 
-select * from t_inventory
---连表查询
-select * from t_inventory i ,t_product2 p where i.p_id = p.p_id
-select * from t_inventory i ,t_product2 p where i.p_id = p.p_id and p.t_id = 1
-select * from t_inventory i ,t_product2 p,t_type2 t  where i.p_id = p.p_id and t.t_id = p.t_id and i.p_id =2
 --库存序列
 create sequence seq_inventory2
   increment by 1
@@ -223,8 +213,5 @@ insert into t_inventory values(seq_inventory2.nextval,4,40);
 insert into t_inventory values(seq_inventory2.nextval,5,50);
 insert into t_inventory values(seq_inventory2.nextval,6,60);
 insert into t_inventory values(seq_inventory2.nextval,7,70);
-
---模糊查询
-select * from t_inventory i,t_product2 p where p.p_id = i.p_id and p.p_name like '%果%' 
 
 commit

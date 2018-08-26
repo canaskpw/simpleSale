@@ -19,10 +19,14 @@ public class Purchasegood {
 	//员工编号（外键）
 	private Integer  eId;
 	
+	
+	
 	public Purchasegood() {
 		super();
 	}
 
+	
+	
 	public Purchasegood(Integer purId, Integer pId, double purPrice, Integer purNum, Integer sId, Integer purStatus,
 			String purTime, Integer eId) {
 		
@@ -36,69 +40,101 @@ public class Purchasegood {
 		this.eId = eId;
 	}
 
+
+
 	public Integer getPurId() {
 		return purId;
 	}
+
+
 
 	public void setPurId(Integer purId) {
 		this.purId = purId;
 	}
 
+
+
 	public Integer getpId() {
 		return pId;
 	}
+
+
 
 	public void setpId(Integer pId) {
 		this.pId = pId;
 	}
 
+
+
 	public double getPurPrice() {
 		return purPrice;
 	}
+
+
 
 	public void setPurPrice(double purPrice) {
 		this.purPrice = purPrice;
 	}
 
+
+
 	public Integer getPurNum() {
 		return purNum;
 	}
+
+
 
 	public void setPurNum(Integer purNum) {
 		this.purNum = purNum;
 	}
 
+
+
 	public Integer getsId() {
 		return sId;
 	}
+
+
 
 	public void setsId(Integer sId) {
 		this.sId = sId;
 	}
 
+
+
 	public Integer getPurStatus() {
 		return purStatus;
 	}
+
+
 
 	public void setPurStatus(Integer purStatus) {
 		this.purStatus = purStatus;
 	}
 
+
+
 	public String getPurTime() {
 		return purTime;
 	}
+
+
 
 	public void setPurTime(String purTime) {
 		this.purTime = purTime;
 	}
 
+
+
 	public Integer geteId() {
 		return eId;
 	}
 
+
+
 	public void seteId(Integer eId) {
 		this.eId = eId;
 	}
-	
+
 	
 }

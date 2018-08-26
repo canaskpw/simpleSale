@@ -28,7 +28,7 @@ public class ProductSaleServlet extends HttpServlet{
 		//设置属性（当前订单号）
 		req.setAttribute("nextOid", nextOid);
 		
-		//重定向到商品销售页面
+		//转发到商品销售页面
 		req.getRequestDispatcher("ProductSale.jsp").forward(req, resp);
 	}
 }
